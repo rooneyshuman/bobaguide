@@ -1,0 +1,60 @@
+/* Shops styles */
+
+#shop-table {
+    width: auto;
+    margin: 20px;
+    margin-left: 15px;
+    margin-top: 0px;
+}
+
+.table-scroll {
+    height: 600px;
+    overflow: auto;
+}
+
+.checked {
+    color : rgb(42,195,193)
+}
+
+.card {
+    color :rgb(86, 86, 86);
+}
+
+.name_links {
+    font-weight: bold;
+    font-size: 22px;
+}
+
+.row {
+    width: auto;
+    margin: 0px;
+}
+
+.transparent-border {
+    border: transparent;
+}
+
+.card-text {
+  font-size: 15px;
+}
+
+#shops_img {
+  background-image: url('/static/images/shops_bg.jpg');
+  background-size: cover;
+  position: relative;
+  background-size: auto 100%;
+  height: 600px;
+  padding-top: 20%;
+  padding-bottom: 20%;
+  margin-right: 25px;
+  background-position-y: 100%;
+}
+
+.btn {
+  font-size: 15px;
+    color : #007bff
+}
+
+.btn:hover {
+    color : #007bff
+}

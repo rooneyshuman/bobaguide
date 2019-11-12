@@ -1,0 +1,49 @@
+/* Form styles */
+
+#main_container {
+  background-image: url('/static/images/marble_bg.jpg');
+  width: auto;
+}
+
+h2 {
+  font-weight: bold;
+}
+
+.rating {
+  overflow: hidden;
+  display: inline-block;
+}
+
+.rating-input {
+  float: right;
+  padding: 0;
+  margin: 0 0 0 -16px;
+  opacity: 0;
+}
+
+.fa-star,
+.rating:hover .fa-star {
+  font-size: 25px;
+  cursor: pointer;
+  position: relative;
+  display: block;
+  float: right;
+  margin-right: 5px;
+}
+
+.fa-star:hover,
+.fa-star:hover ~ .fa-star,
+.rating-input:checked ~ .fa-star {
+  color : rgb(42, 195, 193);
+}
+
+.btn {
+  color: white;
+  font-size: 20px;
+  background-color: rgb(42,195,193) !important;
+}
+
+.btn:hover {
+  color: white;
+  background-color: rgb(38,135,132) !important;
+}

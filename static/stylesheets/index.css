@@ -1,0 +1,29 @@
+/* Index styles */
+#main-boba {
+  background-image: url('/static/images/boba_main_bg.jpg');
+  background-size: cover;
+  position: relative;
+  background-size: 100% auto;
+  height: 600px;
+  padding-top: 20%;
+  padding-bottom: 20%;
+  background-position-y: 100%;
+}
+
+#main-container {
+  position: absolute;
+  width: 80%;
+  color: white;
+  top: 40px;
+  left: 120px;
+  position: absolute;
+}
+
+#guide {
+  font-size: 4vw;
+}
+
+#fixing {
+  font-size: 2.2vw;
+  margin: 0;
+}

@@ -1,0 +1,65 @@
+{% extends "layout.html" %}
+
+{% block stylesheet %}
+<link rel=stylesheet type=text/css href="/static/stylesheets/shops.css">
+{% endblock %}
+
+
+{% block content %}
+
+<div class="row">
+
+  <div class="col-sm-5 table-scroll pr-0">
+    <div id="shop-table">
+      <table class="table table-bordered table-striped table-light">
+        {% for shop in shops %}
+        <tr>
+          <div class="card">
+            <div class="card-body">
+              <div class="row">
+                <div class="col-sm-5 pt-3">
+                  <div class="row">
+                    <img src="/static/images/cups_straws.jpg" style="width:100%; height:auto;">
+                  </div>
+                  <div class="row">
+                    <form action="{{ url_for('shops') }}" method=post>
+                      <input type="hidden" name="name" value="{{ shop.name }}">
+                      <button type="submit" class="btn btn-light btn-block" value="Form" >Delete</button>
+                    </form>
+                  </div>
+                </div>
+                <div class="col-sm-7">
+                  <a  class="name_links" href="{{ shop.website }}">{{ loop.index }}. {{ shop.name }}</a> <br>
+                  {% for i in range(shop.rating) %}
+                  <span class="fa fa-star checked"></span>
+                  {% endfor %}
+                  {% for i in range(5 - shop.rating) %}
+                  <span class="fa fa-star"></span>
+                  {% endfor %} <br>
+                  <div class="card-text">
+                    {{ shop.street }} <br>
+                    {{ shop.city }}, {{ shop.state }} {{ shop.zip }} <br>
+                    {{ shop.phone }} <br>
+                    <b>Hours:</b> {{ shop.open_hr }} - {{ shop.close_hr }} <br>
+                    <b>Signature Drink:</b> {{ shop.drink }} <br>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </tr>
+        {% endfor %}
+      </table>
+    </div>
+  </div>
+
+  <div class="col pr-0" id="shops_img">
+  </div>
+  <script type="text/javascript">
+      $('.card').hover(
+        function(){ $(this).addClass('border-info') },
+        function(){ $(this).removeClass('border-info') }
+      )
+  </script>
+</div>
+{% endblock %}

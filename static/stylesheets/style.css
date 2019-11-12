@@ -1,0 +1,37 @@
+/* Navbar styles */
+.nav-link {
+  color : rgb(86, 86, 86) !important;
+  font-size: 20px;
+}
+
+.nav-item > a:hover {
+  color : rgb(42, 195, 193)!important;
+}
+
+.nav-item.active .nav-link {
+  color : rgb(42, 195, 193)!important;
+ }
+
+.navbar {
+  padding: 0rem 1rem;
+}
+
+.navbar-brand {
+  color: rgb(42, 195, 193) !important;
+  font-size: 2.5vw;
+  font-family: 'Fredoka One', cursive;
+}
+/* ----------------------- */
+
+body {
+  font-family: 'Raleway', sans-serif;
+  font-size: 20px;
+  color: rgb(86,86,86);
+}
+
+.heading  { font-weight: bold; }
+
+/* Footer styles */
+footer {
+  padding-top: 2.5%;
+}
