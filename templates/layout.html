@@ -24,9 +24,9 @@
 
     <div class="expand navbar-expand">
       <ul class="nav navbar-nav navbar-right">
-        <li class="nav-item active"><a class="nav-link" href="/">Home</a></li>
-        <li class="nav-item"><a class="nav-link" href="/form">Add Tea Shop</a></li>
-        <li class="nav-item"><a class="nav-link" href="/shops">View Tea Shops</a></li>
+        <li class="nav-item {% block nav_item_home %}{% endblock nav_item_home %}"><a class="nav-link" href="/">Home</a></li>
+        <li class="nav-item {% block nav_item_form %}{% endblock nav_item_form %}"><a class="nav-link" href="/form">Add Tea Shop</a></li>
+        <li class="nav-item {% block nav_item_shops %}{% endblock nav_item_shops %}"><a class="nav-link" href="/shops">View Tea Shops</a></li>
       </ul>
     </div>
 
