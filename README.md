@@ -6,7 +6,7 @@ Maintains a database of bubble tea shop locations. Allows users to view all loca
 
 ## Deployment
 
-The web application has been deployed on Google App Engine, and can be accessed via the following URL:[Boba Guide](http://bobaguide.appspot.com/)
+The web application has been deployed on Google App Engine, and can be accessed via the following URL: [Boba Guide](http://bobaguide.appspot.com/)
 
 ## Built With
 
