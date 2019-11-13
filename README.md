@@ -1,10 +1,12 @@
 # Boba Guide
 
-Helping you get your bubble tea fix. Maintains a database of bubble tea shop locations. Allows users to view all locations or add a new one to the database.
+> Helping you get your bubble tea fix!
+
+Maintains a database of bubble tea shop locations. Allows users to view all locations or add a new one to the database.
 
 ## Deployment
 
-The web-app has been deployed through Google App Engine and can be accessed through the following URL: [Boba Guide](http://bobaguide.appspot.com/)
+The web application has been deployed on Google App Engine, and can be accessed via the following URL:[Boba Guide](http://bobaguide.appspot.com/)
 
 ## Built With
 
@@ -25,7 +27,7 @@ The following frameworks were used to build this full-stack web-app:
 
 ## License
 
-This project is licensed under the MIT License
+Distributed under the MIT License. See [LICENSE](/LICENSE) for more information.
 
 ## Acknowledgements
 * Photos used were found on [Unsplash](https://unsplash.com/)
