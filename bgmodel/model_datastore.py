@@ -36,7 +36,7 @@ def from_datastore(entity):
 
 class model(Model):
     def __init__(self):
-        self.client = datastore.Client('cs430-belen-bustamante')
+        self.client = datastore.Client('bobaguide')
 
     def select(self):
         query = self.client.query(kind = 'BobaShop')
