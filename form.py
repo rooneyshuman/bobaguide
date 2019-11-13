@@ -1,6 +1,6 @@
 from flask import redirect, request, url_for, render_template
 from flask.views import MethodView
-import gbmodel
+import bgmodel
 
 class Form(MethodView):
     def get(self):
@@ -15,7 +15,7 @@ class Form(MethodView):
         Accepts POST requests, and processes the form;
         Redirect to index when completed.
         """
-        model = gbmodel.get_model()
+        model = bgmodel.get_model()
         website = request.form['website']
         if not ("http" in website):
             website = "http://" + website
