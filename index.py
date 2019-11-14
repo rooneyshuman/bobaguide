@@ -1,6 +1,7 @@
 from flask import render_template
 from flask.views import MethodView
-from settings_datastore import Settings
+from bgmodel.settings_datastore import Settings
+import sys
 
 class Index(MethodView):
     def get(self):
@@ -8,5 +9,6 @@ class Index(MethodView):
         GET method for the main landing page
         :return: renders the index.html page on return
         """
-        API_KEY = Settings.select('API_KEY')
+        API_KEY = Settings().select('API_KEY')
+        print(API_KEY)
         return render_template('index.html')

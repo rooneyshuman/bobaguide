@@ -38,11 +38,9 @@ class settings(Settings):
     def __init__(self):
         self.client = datastore.Client('bobaguide')
 
-    def select(self, key):
-        query = self.client.query(kind = 'Settings')
-        query.add_filter('key', '=', key)
-        entities = list(map(from_datastore,query.fetch()))
-        return entities
+    def select(self, name):
+        query = self.client.query(Settings.name == name).get()
+        return query.value
 
     def insert(self, key, value):
         key = self.client.key('Settings', key)
