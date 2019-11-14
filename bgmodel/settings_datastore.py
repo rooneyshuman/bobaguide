@@ -39,13 +39,13 @@ class settings(Settings):
         self.client = datastore.Client('bobaguide')
 
     def select(self, key):
-        query = self.client.query(kind = 'Configuration')
+        query = self.client.query(kind = 'Settings')
         query.add_filter('key', '=', key)
         entities = list(map(from_datastore,query.fetch()))
         return entities
 
     def insert(self, key, value):
-        key = self.client.key('Configuration', key)
+        key = self.client.key('Settings', key)
         rev = datastore.Entity(key)
         rev.update( {
             'key': key,
@@ -55,6 +55,6 @@ class settings(Settings):
         return True
 
     def delete(self, key):
-        key = self.client.key('Configuration', key)
+        key = self.client.key('Settings', key)
         self.client.delete(key)
         return True
