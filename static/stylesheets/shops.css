@@ -38,18 +38,6 @@
   font-size: 15px;
 }
 
-#shops_img {
-  background-image: url('/static/images/shops_bg.jpg');
-  background-size: cover;
-  position: relative;
-  background-size: auto 100%;
-  height: 600px;
-  padding-top: 20%;
-  padding-bottom: 20%;
-  margin-right: 25px;
-  background-position-y: 100%;
-}
-
 .btn {
   font-size: 15px;
     color : #007bff
