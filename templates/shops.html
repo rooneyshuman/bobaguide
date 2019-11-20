@@ -15,7 +15,7 @@
       <table class="table table-bordered table-striped table-light">
         {% for shop in shops %}
         <tr>
-          <div class="card">
+          <div class="card" id="shopid{{ loop.index }}">
             <div class="card-body">
               <div class="row">
                 <div class="col-sm-5 pt-3">
@@ -54,13 +54,13 @@
     </div>
   </div>
 
-  <div class="col pr-0" id="shops_img">
-  </div>
+  <div id="map" class="col mr-4"></div>
+
+</div>
   <script type="text/javascript">
       $('.card').hover(
         function(){ $(this).addClass('border-info') },
         function(){ $(this).removeClass('border-info') }
       )
   </script>
-</div>
 {% endblock %}
