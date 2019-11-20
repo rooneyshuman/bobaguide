@@ -1,5 +1,7 @@
 from flask import render_template
 from flask.views import MethodView
+from bgmodel.settings_datastore import Settings
+import sys
 
 class Index(MethodView):
     def get(self):
