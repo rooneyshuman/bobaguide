@@ -122,6 +122,13 @@
       })
     );
 
+    marker[{{ loop.index }} - 1].addListener('click', function() {
+      for(j = 0; j < infowindow.length; ++j) {
+        infowindow[j].close();
+      }
+      infowindow[{{ loop.index }} - 1].open(map, marker[{{ loop.index }} - 1]);
+    });
+
 </script>
 
 
