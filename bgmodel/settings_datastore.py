@@ -23,9 +23,7 @@ def from_datastore(entity):
         [Entity{key: (kind, id), prop: val, ...}]
 
     This returns:
-        [ name, street, city, state, zip, open_hr, close_hr, phone, drink, rating, website ]
-    where name, street, city, state, open_hr, close_hr, phone, drink, and website are Python strings
-    and where zip and rating are Python integers
+        [ api_key ] where api_key is a Python string
     """
     if not entity:
         return None
@@ -37,7 +35,7 @@ class settings(Settings):
     def __init__(self):
         self.client = datastore.Client('bobaguide')
 
-    def select(self, name):
+    def select(self):
         query = self.client.query(kind = 'Settings')
         entities = list(map(from_datastore,query.fetch()))
         return entities
