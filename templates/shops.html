@@ -129,6 +129,17 @@
       infowindow[{{ loop.index }} - 1].open(map, marker[{{ loop.index }} - 1]);
     });
 
+    obj = document.getElementById("shopid{{ loop.index }}");
+    console.log(obj);
+    obj.addEventListener('click', function() {
+      for (j = 0; j < infowindow.length; ++ j) {
+        infowindow[j].close();
+      }
+      infowindow[{{ loop.index }} - 1].open(map, marker[{{ loop.index }} - 1]);
+    });
+
+  {% endfor %}
+
 </script>
 
 
