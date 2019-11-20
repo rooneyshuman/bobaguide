@@ -108,6 +108,13 @@
       scaledSize: new google.maps.Size(32, 32),
     }
 
+    marker.push(
+      new google.maps.Marker({
+        position: temp_locations[{{ loop.index - 1 }}],
+        map: map,
+        icon: icon
+      })
+    );
 </script>
 
 
