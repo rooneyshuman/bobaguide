@@ -1,5 +1,5 @@
 {% extends "layout.html" %}
-{% block nav_item_shops %}active{% endblock nav_item_shops %} 
+{% block nav_item_shops %}active{% endblock nav_item_shops %}
 
 {% block stylesheet %}
 <link rel=stylesheet type=text/css href="/static/stylesheets/shops.css">
@@ -85,6 +85,23 @@
         {lat: 45.5044377, lng: -122.7129468}
       ]
 
+    {% for shop in shops %}
+      mapContent =
+      '<div class="card transparent-border" id="mapid{{ loop.index }}">' +
+        '<div class="card-body px-0 pt-2 pb-0">' +
+          '<div class="row">' +
+            '<div class="col">' +
+              '<h5 class="card-text">{{ loop.index }}. {{ shop.name }}</h5>';
+                for(var j = 0; j < {{ shop.rating }}; ++j) {
+                  mapContent += '<span class="fa fa-star checked"></span>';
+                }
+                for(var j = 0; j < (5 - {{ shop.rating }}); ++j) {
+                  mapContent += '<span class="fa fa-star"></span>';
+                }
+            '</div>' +
+          '</div>' +
+        '</div>' +
+      '</div>';
 </script>
 
 
