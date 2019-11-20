@@ -57,10 +57,22 @@
   <div id="map" class="col mr-4"></div>
 
 </div>
-  <script type="text/javascript">
-      $('.card').hover(
-        function(){ $(this).addClass('border-info') },
-        function(){ $(this).removeClass('border-info') }
-      )
-  </script>
+
+<script type="text/javascript">
+    $('.card').hover(
+      function(){ $(this).addClass('border-info') },
+      function(){ $(this).removeClass('border-info') }
+    )
+</script>
+
+<script>
+    var map;
+    function initMap() {
+      map = new google.maps.Map(document.getElementById('map'), {
+        center: {lat: 45.523064, lng: -122.676483},
+        zoom: 12
+      })
+</script>
+
+
 {% endblock %}
