@@ -13,7 +13,6 @@
 # limitations under the License.
 
 from .Settings import Settings
-from datetime import datetime
 from google.cloud import datastore
 
 def from_datastore(entity):
@@ -32,27 +31,13 @@ def from_datastore(entity):
         return None
     if isinstance(entity, list):
         entity = entity.pop()
-    return [entity['value']]
+    return [entity['api_key']]
 
 class settings(Settings):
     def __init__(self):
         self.client = datastore.Client('bobaguide')
 
     def select(self, name):
-        query = self.client.query(Settings.name == name).get()
-        return query.value
-
-    def insert(self, key, value):
-        key = self.client.key('Settings', key)
-        rev = datastore.Entity(key)
-        rev.update( {
-            'key': key,
-            'value': value
-            })
-        self.client.put(rev)
-        return True
-
-    def delete(self, key):
-        key = self.client.key('Settings', key)
-        self.client.delete(key)
-        return True
+        query = self.client.query(kind = 'Settings')
+        entities = list(map(from_datastore,query.fetch()))
+        return entities
