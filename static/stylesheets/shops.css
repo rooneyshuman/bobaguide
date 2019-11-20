@@ -46,3 +46,7 @@
 .btn:hover {
     color : #007bff
 }
+
+#map {
+    height: 600px;
+}
