@@ -59,54 +59,55 @@
 </div>
 
 <script type="text/javascript">
-    $('.card').hover(
-      function(){ $(this).addClass('border-info') },
-      function(){ $(this).removeClass('border-info') }
-    )
+  $('.card').hover(
+    function(){ $(this).addClass('border-info') },
+    function(){ $(this).removeClass('border-info') }
+  )
 </script>
 
 <script>
-    var map;
-    function initMap() {
-      map = new google.maps.Map(document.getElementById('map'), {
-        center: {lat: 45.523064, lng: -122.676483},
-        zoom: 12
-      })
+  var map;
+  function initMap() {
+    map = new google.maps.Map(document.getElementById('map'), {
+      center: {lat: 45.523064, lng: -122.676483},
+      zoom: 12
+    })
 
-      var marker = [];
-      var infowindow = [];
-      var obj;
-      var mapContent;
-      var temp_locations = [
-        {lat: 45.5113875, lng: -122.6877654},
-        {lat: 45.5076607, lng: -122.7330264},
-        {lat: 45.527706, lng: -122.661974},
-        {lat: 45.517461, lng: -122.655665},
-        {lat: 45.5044377, lng: -122.7129468}
-      ]
+    var marker = [];
+    var infowindow = [];
+    var obj;
+    var mapContent;
+    var temp_locations = [
+      {lat: 45.5113875, lng: -122.6877654},
+      {lat: 45.5076607, lng: -122.7330264},
+      {lat: 45.527706, lng: -122.661974},
+      {lat: 45.517461, lng: -122.655665},
+      {lat: 45.5044377, lng: -122.7129468}
+    ]
 
-    {% for shop in shops %}
-      mapContent =
-      '<div class="card transparent-border" id="mapid{{ loop.index }}">' +
-        '<div class="card-body px-0 pt-2 pb-0">' +
-          '<div class="row">' +
-            '<div class="col">' +
-              '<h5 class="card-text">{{ loop.index }}. {{ shop.name }}</h5>';
-                for(var j = 0; j < {{ shop.rating }}; ++j) {
-                  mapContent += '<span class="fa fa-star checked"></span>';
-                }
-                for(var j = 0; j < (5 - {{ shop.rating }}); ++j) {
-                  mapContent += '<span class="fa fa-star"></span>';
-                }
-            '</div>' +
+  {% for shop in shops %}
+    mapContent =
+    '<div class="card transparent-border" id="mapid{{ loop.index }}">' +
+      '<div class="card-body px-0 pt-2 pb-0">' +
+        '<div class="row">' +
+          '<div class="col">' +
+            '<h5 class="card-text">{{ loop.index }}. {{ shop.name }}</h5>';
+              for(var j = 0; j < {{ shop.rating }}; ++j) {
+                mapContent += '<span class="fa fa-star checked"></span>';
+              }
+              for(var j = 0; j < (5 - {{ shop.rating }}); ++j) {
+                mapContent += '<span class="fa fa-star"></span>';
+              }
           '</div>' +
         '</div>' +
-      '</div>';
+      '</div>' +
+    '</div>';
 
-      var icon = {
-        url: '/static/images/favicon.ico',
-        scaledSize: new google.maps.Size(32, 32),
-      }
+    var icon = {
+      url: '/static/images/favicon.ico',
+      scaledSize: new google.maps.Size(32, 32),
+    }
+
 </script>
 
 
