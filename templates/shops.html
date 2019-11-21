@@ -130,7 +130,6 @@
     });
 
     obj = document.getElementById("shopid{{ loop.index }}");
-    console.log(obj);
     obj.addEventListener('click', function() {
       for (j = 0; j < infowindow.length; ++ j) {
         infowindow[j].close();
@@ -141,7 +140,7 @@
   {% endfor %}
   }
 </script>
-<script src="https://maps.googleapis.com/maps/api/js?key={{ api_keys[0].api_key }}&callback=initMap"
+<script src="https://maps.googleapis.com/maps/api/js?key={{ api_keys.google }}&callback=initMap"
 async defer></script>
 
 {% endblock %}
