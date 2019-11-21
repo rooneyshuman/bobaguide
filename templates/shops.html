@@ -139,6 +139,9 @@
     });
 
   {% endfor %}
+  }
 </script>
+<script src="https://maps.googleapis.com/maps/api/js?key={{ api_keys[0].api_key }}&callback=initMap"
+async defer></script>
 
 {% endblock %}
