@@ -25,12 +25,12 @@
                   <div class="row">
                     <form action="{{ url_for('shops') }}" method=post>
                       <input type="hidden" name="name" value="{{ shop.name }}">
-                      <button type="submit" class="btn btn-light btn-block" value="Form" >Delete</button>
+                      <button type="submit" class="btn btn-light btn-block" value="Form">Delete</button>
                     </form>
                   </div>
                 </div>
                 <div class="col-sm-7">
-                  <a  class="name_links" href="{{ shop.website }}">{{ loop.index }}. {{ shop.name }}</a> <br>
+                  <a class="name_links" href="{{ shop.website }}">{{ loop.index }}. {{ shop.name }}</a> <br>
                   {% for i in range(shop.rating) %}
                   <span class="fa fa-star checked"></span>
                   {% endfor %}
@@ -122,16 +122,16 @@
       })
     );
 
-    marker[{{ loop.index }} - 1].addListener('click', function() {
-      for(j = 0; j < infowindow.length; ++j) {
+    marker[{{ loop.index }} - 1].addListener('click', function () {
+      for (j = 0; j < infowindow.length; ++j) {
         infowindow[j].close();
       }
       infowindow[{{ loop.index }} - 1].open(map, marker[{{ loop.index }} - 1]);
     });
 
     obj = document.getElementById("shopid{{ loop.index }}");
-    obj.addEventListener('click', function() {
-      for (j = 0; j < infowindow.length; ++ j) {
+    obj.addEventListener('click', function () {
+      for (j = 0; j < infowindow.length; ++j) {
         infowindow[j].close();
       }
       infowindow[{{ loop.index }} - 1].open(map, marker[{{ loop.index }} - 1]);
@@ -140,7 +140,6 @@
   {% endfor %}
   }
 </script>
-<script src="https://maps.googleapis.com/maps/api/js?key={{ api_keys.google }}&callback=initMap"
-async defer></script>
+<script src="https://maps.googleapis.com/maps/api/js?key={{ api_keys.google }}&callback=initMap" async defer></script>
 
 {% endblock %}
