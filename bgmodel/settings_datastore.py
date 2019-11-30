@@ -23,13 +23,13 @@ def from_datastore(entity):
         [Entity{key: (kind, id), prop: val, ...}]
 
     This returns:
-        [ google ] where google is a Python string for the api key for Google API's
+        [ google, yelp ] where google and yelp are Python strings for the api keys for the Google and Yelp API's
     """
     if not entity:
         return None
     if isinstance(entity, list):
         entity = entity.pop()
-    return [entity['google']]
+    return [entity['google'], entity['yelp']]
 
 class settings(Settings):
     def __init__(self):
