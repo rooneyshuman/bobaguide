@@ -34,7 +34,7 @@ app.add_url_rule('/shops/',
 """
 Route for reviews (display) page. Accepts GET and POST methods
 """
-app.add_url_rule('/reviews/<shop_phone>',
+app.add_url_rule('/reviews/<shop_name>/<shop_phone>',
                  view_func=Reviews.as_view('reviews'),
                  methods=['GET', 'POST'])
 
