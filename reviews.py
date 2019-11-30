@@ -22,7 +22,8 @@ class Reviews(MethodView):
         
         # Retrieves yelp reviews through yelp id and passes them to reviews template
         raw_reviews = requests.get("https://api.yelp.com/v3/businesses/" + yelp_id + "/reviews", headers={"Authorization": "Bearer " + api_keys['yelp']}).json()['reviews']
-        yelp_reviews = [dict(id=review['id'], text=review['text'], date=review['time_created'], user_name=review['user']['name'], user_img=review['user']['image_url']) for review in raw_reviews]
+        yelp_reviews = [dict(id=review['id'], text=review['text'], date=review['time_created'], url=review['url'], 
+            user_name=review['user']['name'], user_img=review['user']['image_url']) for review in raw_reviews]
         return render_template('reviews.html', yelp_reviews=yelp_reviews)
 
     def post(self):
