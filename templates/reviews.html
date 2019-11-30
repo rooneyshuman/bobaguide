@@ -18,7 +18,7 @@
             <h2>{{ review.user_name }}</h2>
             <i>{{ review.date }}</i>
             <p>{{ review.text }}</p>
-            <p><a class="btn btn-secondary" href="#" role="button">View on Yelp &raquo;</a></p>
+            <p><a class="btn btn-secondary" href="{{ review.url }}" role="button">View on Yelp</a></p>
         </div>
         {% endfor %}
     </div>
