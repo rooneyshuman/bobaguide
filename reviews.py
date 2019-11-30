@@ -16,8 +16,11 @@ class Reviews(MethodView):
         key_row = settings.select()[0]
         api_keys = dict(google=key_row[0], yelp=key_row[1])
 
-        response = requests.get("https://api.yelp.com/v3/businesses/search/phone?phone=+1" + shop_phone, headers={"Authorization": "Bearer " + api_keys['yelp']})
-        return render_template('reviews.html')
+        # Retrieves yelp id through phone search
+        response = requests.get("https://api.yelp.com/v3/businesses/search/phone?phone=+1" + shop_phone, headers={"Authorization": "Bearer " + api_keys['yelp']}).json()
+        yelp_id = response['businesses'][0]['id']
+        
+        return render_template('reviews.html', yelp_reviews=yelp_reviews)
 
     def post(self):
         """
