@@ -7,9 +7,21 @@
 
 {% block content %}
 <div >
-  <div class="container">
-    <p>Reviews</p>
-    <p>{{ yelp_reviews }}</p}
+  <div class="container" style="height:250px">
+      <h2 style="padding-top:100px">Shop Name Here</h2>
+  </div>
+  <div class="container marketing">
+    <div class="row">
+        {% for review in yelp_reviews %}
+        <div class="col-lg-4">
+            <img src="{{ review.user_img }}" style="height:100px">
+            <h2>{{ review.user_name }}</h2>
+            <i>{{ review.date }}</i>
+            <p>{{ review.text }}</p>
+            <p><a class="btn btn-secondary" href="#" role="button">View on Yelp &raquo;</a></p>
+        </div>
+        {% endfor %}
+    </div>
   </div>
 </div>
 
