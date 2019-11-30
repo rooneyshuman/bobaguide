@@ -20,6 +20,8 @@ class Reviews(MethodView):
         response = requests.get("https://api.yelp.com/v3/businesses/search/phone?phone=+1" + shop_phone, headers={"Authorization": "Bearer " + api_keys['yelp']}).json()
         yelp_id = response['businesses'][0]['id']
         
+        # Retrieves yelp reviews through yelp id and passes them to reviews template
+        yelp_reviews = requests.get("https://api.yelp.com/v3/businesses/" + yelp_id + "/reviews", headers={"Authorization": "Bearer " + api_keys['yelp']}).json()
         return render_template('reviews.html', yelp_reviews=yelp_reviews)
 
     def post(self):
