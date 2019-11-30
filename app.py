@@ -6,6 +6,7 @@ from flask.views import MethodView
 from index import Index
 from form import Form
 from shops import Shops
+from reviews import Reviews
 
 app = flask.Flask(__name__)       # our Flask app
 
@@ -28,6 +29,13 @@ Route for shops (display) page. Accepts GET and POST methods
 """
 app.add_url_rule('/shops/',
                  view_func=Shops.as_view('shops'),
+                 methods=['GET', 'POST'])
+
+"""
+Route for reviews (display) page. Accepts GET and POST methods
+"""
+app.add_url_rule('/reviews/<shop_phone>',
+                 view_func=Reviews.as_view('reviews'),
                  methods=['GET', 'POST'])
 
 """
