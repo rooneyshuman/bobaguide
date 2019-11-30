@@ -30,7 +30,6 @@ class Reviews(MethodView):
         for review in raw_reviews:
             date_time_str = review['time_created']
             formatted_date = datetime.datetime.strptime(date_time_str, '%Y-%m-%d %H:%M:%S').date()
-            print(formatted_date.year)
             review['time_created'] = str(formatted_date.month) + "/" + str(formatted_date.day) + "/" + str(formatted_date.year)
 
         yelp_reviews = [dict(id=review['id'], text=review['text'], date=review['time_created'], url=review['url'], 
