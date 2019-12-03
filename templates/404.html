@@ -1,0 +1,19 @@
+{% extends "layout.html" %}
+{% block nav_item_shops %}active{% endblock nav_item_shops %} 
+
+{% block stylesheet %}
+<link rel=stylesheet type=text/css href="/static/stylesheets/reviews.css">
+{% endblock %}
+
+{% block content %}
+<div >
+  <div class="container" style="height:250px">
+      <h1><center>{{ shop_name }}</center></h1>
+  </div>
+  <div class="container marketing">
+    <h3 style="height:100px"><center>Uh oh... no reviews found for this shop!</center></h3>
+    <p><center><a class="btn btn-secondary" href="/shops" role="button">Back to Shops List</a></center></p>
+  </div>
+</div>
+
+{% endblock %}
