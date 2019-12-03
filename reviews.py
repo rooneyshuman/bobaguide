@@ -20,7 +20,8 @@ class Reviews(MethodView):
 
         # Retrieve yelp id through phone search
         response = requests.get(
-            "https://api.yelp.com/v3/businesses/search/phone?phone=+1" + shop_phone,
+            "https://api.yelp.com/v3/businesses/search/phone?phone=+1"
+            + shop_phone.replace("-", ""),
             headers={"Authorization": "Bearer " + api_keys["yelp"]},
         )
 
@@ -40,7 +41,13 @@ class Reviews(MethodView):
                 date_str = datetime.datetime.strptime(
                     date_time_str, "%Y-%m-%d %H:%M:%S"
                 ).date()
-                formatted_date = str(date_str.month) + "/" + str(date_str.day) + "/" + str(date_str.year)
+                formatted_date = (
+                    str(date_str.month)
+                    + "/"
+                    + str(date_str.day)
+                    + "/"
+                    + str(date_str.year)
+                )
                 review["time_created"] = formatted_date
 
             # Build dictionary of yelp reviews
