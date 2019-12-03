@@ -30,42 +30,46 @@ class Reviews(MethodView):
             yelp_id = response.json()["businesses"][0]["id"]
 
             # Retrieve yelp reviews through yelp id and passes them to reviews template
-            raw_reviews = requests.get(
+            response = requests.get(
                 "https://api.yelp.com/v3/businesses/" + yelp_id + "/reviews",
                 headers={"Authorization": "Bearer " + api_keys["yelp"]},
-            ).json()["reviews"]
-
-            # Format datetime string to mm/dd/yyyy
-            for review in raw_reviews:
-                date_time_str = review["time_created"]
-                date_str = datetime.datetime.strptime(
-                    date_time_str, "%Y-%m-%d %H:%M:%S"
-                ).date()
-                formatted_date = (
-                    str(date_str.month)
-                    + "/"
-                    + str(date_str.day)
-                    + "/"
-                    + str(date_str.year)
-                )
-                review["time_created"] = formatted_date
-
-            # Build dictionary of yelp reviews
-            yelp_reviews = [
-                dict(
-                    id=review["id"],
-                    text=review["text"],
-                    date=review["time_created"],
-                    url=review["url"],
-                    user_name=review["user"]["name"],
-                    user_img=review["user"]["image_url"],
-                )
-                for review in raw_reviews
-            ]
-
-            return render_template(
-                "reviews.html", yelp_reviews=yelp_reviews, shop_name=shop_name
             )
+            if response.status_code == 200:
+                raw_reviews = response.json()["reviews"]
+
+                # Format datetime string to mm/dd/yyyy
+                for review in raw_reviews:
+                    date_time_str = review["time_created"]
+                    date_str = datetime.datetime.strptime(
+                        date_time_str, "%Y-%m-%d %H:%M:%S"
+                    ).date()
+                    formatted_date = (
+                        str(date_str.month)
+                        + "/"
+                        + str(date_str.day)
+                        + "/"
+                        + str(date_str.year)
+                    )
+                    review["time_created"] = formatted_date
+
+                # Build dictionary of yelp reviews
+                yelp_reviews = [
+                    dict(
+                        id=review["id"],
+                        text=review["text"],
+                        date=review["time_created"],
+                        url=review["url"],
+                        user_name=review["user"]["name"],
+                        user_img=review["user"]["image_url"],
+                    )
+                    for review in raw_reviews
+                ]
+
+                return render_template(
+                    "reviews.html", yelp_reviews=yelp_reviews, shop_name=shop_name
+                )
+            else:
+                return render_template("404.html", shop_name=shop_name)
         else:
             return render_template("404.html", shop_name=shop_name)
 
