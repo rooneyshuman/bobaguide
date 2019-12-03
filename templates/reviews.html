@@ -1,26 +1,28 @@
 {% extends "layout.html" %}
-{% block nav_item_shops %}active{% endblock nav_item_shops %} 
+{% block nav_item_shops %}active{% endblock nav_item_shops %}
 
 {% block stylesheet %}
 <link rel=stylesheet type=text/css href="/static/stylesheets/reviews.css">
 {% endblock %}
 
 {% block content %}
-<div >
-  <div class="container" style="height:250px">
-      <h1><center>{{ shop_name }}</center></h1>
+<div>
+  <div class="container" id="shop_bg">
+    <h1>
+      <center>{{ shop_name }}</center>
+    </h1>
   </div>
   <div class="container marketing">
     <div class="row">
-        {% for review in yelp_reviews %}
-        <div class="col-lg-4">
-            <img src="{{ review.user_img }}" style="height:100px">
-            <h2>{{ review.user_name }}</h2>
-            <i>{{ review.date }}</i>
-            <p>{{ review.text }}</p>
-            <p><a class="btn btn-secondary" href="{{ review.url }}" role="button">View on Yelp</a></p>
-        </div>
-        {% endfor %}
+      {% for review in yelp_reviews %}
+      <div class="col-lg-4">
+        <img src="{{ review.user_img }}" id="user_img">
+        <h3>{{ review.user_name }}</h3>
+        <i>{{ review.date }}</i>
+        <p>{{ review.text }}</p>
+        <p><a class="btn btn-md" href="{{ review.url }}" role="button">View on Yelp</a></p>
+      </div>
+      {% endfor %}
     </div>
   </div>
 </div>
