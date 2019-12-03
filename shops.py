@@ -19,12 +19,11 @@ class Shops(MethodView):
         key_row = settings.select()[0]
         api_keys = dict(google=key_row[0])
         shop_locations = []
-        # for shop in shops:
-        address = shops[0]["street"]+"+"+shops[0]["city"]+"+"+shops[0]["state"]
-        response = requests.get("https://maps.googleapis.com/maps/api/geocode/json?address=address&key="+api_keys['google'])
-        test = response.json()["results"][0]["geometry"]["location"]
-        shop_locations.append(test)
-
+        for shop in shops:
+            address = shop["street"]+"+"+shop["city"]+"+"+shop["state"]
+            response = requests.get(("https://maps.googleapis.com/maps/api/geocode/json?address={}&key={}").format(address, api_keys['google']))
+            geocode_result = response.json()["results"][0]["geometry"]["location"]
+            shop_locations.append(geocode_result)
         return render_template('shops.html', shops=shops, api_keys=api_keys, shop_locations=shop_locations)
 
 
@@ -35,5 +34,4 @@ class Shops(MethodView):
         """
         model = bgmodel.get_model()
         model.delete(request.form['name'])
-
         return redirect(url_for('shops'))
