@@ -24,7 +24,7 @@ class Shops(MethodView):
                 zip=row[4],
                 open_hr=row[5],
                 close_hr=row[6],
-                phone=row[7],
+                phone= format(int(row[7][:-1]), ",").replace(",","-") + row[7][-1],
                 drink=row[8],
                 rating=row[9],
                 website=row[10],
