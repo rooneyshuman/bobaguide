@@ -1,0 +1,28 @@
+{% extends "layout.html" %}
+
+{% block stylesheet %}
+<link rel=stylesheet type=text/css href="/static/stylesheets/reviews.css">
+{% endblock %}
+
+{% block content %}
+<div>
+  <div class="container" id="shop_bg">
+    <h1>
+      <center>{{ shop_name }}</center>
+    </h1>
+  </div>
+  <div class="container marketing">
+    <div class="row">
+      <div class="col-md-6">
+        <p>Review:</p>
+        <p>{{ result.input }}</p>
+      </div>
+      <div class="col-md-6">
+        <p>Translated:</p>
+        <p>{{ result.translatedText }}</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% endblock %}
