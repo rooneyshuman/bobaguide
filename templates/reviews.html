@@ -20,6 +20,19 @@
         <i>{{ review.date }}</i>
         <p>{{ review.text }}</p>
         <p><a class="btn btn-md" href="{{ review.url }}" role="button" target="_blank">View on Yelp</a></p>
+        <div class="dropdown">
+          <button class="btn btn-md btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton"
+            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            Translate Review
+          </button>
+          <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+            <p><a class="dropdown-item" href="/translation/{{ shop_name }}/{{ review.text }}/ar">Arabic</a></p>
+            <p><a class="dropdown-item" href="/translation/{{ shop_name }}/{{ review.text }}/bn">Bengali</a></p>
+            <p><a class="dropdown-item" href="/translation/{{ shop_name }}/{{ review.text }}/zh">Chinese</a></p>
+            <p><a class="dropdown-item" href="/translation/{{ shop_name }}/{{ review.text }}/fr">French</a></p>
+            <p><a class="dropdown-item" href="/translation/{{ shop_name }}/{{ review.text }}/pt">Portuguese</a></p>
+            <p><a class="dropdown-item" href="/translation/{{ shop_name }}/{{ review.text }}/es">Spanish</a></p>
+        </div>
       </div>
       {% endfor %}
     </div>
