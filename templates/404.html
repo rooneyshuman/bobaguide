@@ -1,0 +1,26 @@
+{% extends "layout.html" %}
+{% block nav_item_shops %}active{% endblock nav_item_shops %}
+
+{% block stylesheet %}
+<link rel=stylesheet type=text/css href="/static/stylesheets/404.css">
+{% endblock %}
+
+{% block content %}
+<div>
+  <div class="container main_container">
+    <div class="container" style="height:40px">
+      <h1>
+        <center>{{ shop_name }}</center>
+      </h1>
+    </div>
+    <h3>
+      <center>Uh oh... no reviews found for this shop!</center>
+    </h3>
+    <div class="container" id="spilled_milk"></div>
+    <p>
+      <center><a class="btn btn-md" href="/shops" role="button">Back to Shops List</a></center>
+    </p>
+  </div>
+</div>
+
+{% endblock %}
