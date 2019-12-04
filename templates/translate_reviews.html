@@ -1,0 +1,28 @@
+{% extends "layout.html" %}
+
+{% block stylesheet %}
+<link rel=stylesheet type=text/css href="/static/stylesheets/reviews.css">
+{% endblock %}
+
+{% block content %}
+<div>
+  <div class="container" id="shop_bg">
+    <h1>
+      <center>{{ shop_name }}</center>
+    </h1>
+  </div>
+  <div class="container marketing">
+    <div class="row">
+      {% for review in yelp_reviews %}
+      <div class="col-lg-4">
+        <img src="{{ review.user_img }}" id="user_img">
+        <h3>{{ review.user_name }}</h3>
+        <i>{{ review.date }}</i>
+        <p>{{ result.translatedText }}</p>
+        <p><a class="btn btn-md" href="{{ review.url }}" role="button" target="_blank">View on Yelp</a></p>
+      {% endfor %}
+    </div>
+  </div>
+</div>
+
+{% endblock %}
