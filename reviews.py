@@ -66,7 +66,7 @@ class Reviews(MethodView):
                 ]
 
                 return render_template(
-                    "reviews.html", yelp_reviews=yelp_reviews, shop_name=shop_name
+                    "reviews.html", yelp_reviews=yelp_reviews, shop_name=shop_name, shop_phone=shop_phone
                 )
             else:
                 return render_template("404.html", shop_name=shop_name)
