@@ -1,11 +1,26 @@
 {% extends "layout.html" %}
-{% block nav_item_form %}active{% endblock nav_item_form %} 
 
 {% block stylesheet %}
 <link rel=stylesheet type=text/css href="/static/stylesheets/form.css">
 {% endblock %}
 
 {% block content %}
+<header>
+    <nav class="navbar mavbar-expand-sm navbar-light bg-white" role="navigation">
+      <a class="navbar-brand" href="/">
+        <img src="/static/images/logo.jpg" width=50px></i> boba guide
+      </a>
+  
+      <div class="expand navbar-expand">
+        <ul class="nav navbar-nav navbar-right">
+          <li class="nav-item"><a class="nav-link" href="/">Home</a></li>
+          <li class="nav-item active"><a class="nav-link" href="/form">Add Tea Shop</a></li>
+          <li class="nav-item"><a class="nav-link" href="/shops">View Tea Shops</a></li>
+        </ul>
+      </div>
+  
+    </nav>
+  </header>
 
 <div id="main_container">
   <div class="container pb-3" id="form_container">
@@ -170,4 +185,8 @@
     scrollbar: true
   });
 </script>
+
+<footer>
+  <p class="text-center text-muted">© Copyright 2019 Boba Guide</p>
+</footer>
 {% endblock %}
