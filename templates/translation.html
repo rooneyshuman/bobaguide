@@ -5,16 +5,33 @@
 {% endblock %}
 
 {% block content %}
+<header>
+    <nav class="navbar mavbar-expand-sm navbar-light bg-white" role="navigation">
+      <a class="navbar-brand" href="/">
+        <img src="/static/images/logo.jpg" width=50px></i> boba guide
+      </a>
+  
+      <div class="expand navbar-expand">
+        <ul class="nav navbar-nav navbar-right">
+          <li class="nav-item"><a class="nav-link" href="/">{{ translation.translations[0].translatedText }}</a></li>
+          <li class="nav-item"><a class="nav-link" href="/form">{{ translation.translations[1].translatedText }}</a></li>
+          <li class="nav-item"><a class="nav-link" href="/shops">{{ translation.translations[2].translatedText }}</a></li>
+        </ul>
+      </div>
+  
+    </nav>
+  </header>
+
 <div>
   <div class="container" id="shop_bg">
     <h1>
-      <center>{{ shop_name }}</center>
+      <center>{{ translation.translations[3].translatedText }}</center>
     </h1>
   </div>
   <div class="dropdown">
     <button class="btn btn-sm btn-secondary dropdown-toggle dropdown-button" type="button" id="dropdownMenuButton"
       data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-      Translate Reviews
+      {{ translation.translations[4].translatedText }}
     </button>
     <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
       <p><a class="dropdown-item" href="/translation/{{ shop_name }}/{{ shop_phone }}/ar">Arabic</a>
@@ -32,8 +49,6 @@
       <p><a class="dropdown-item" href="/translation/{{ shop_name }}/{{ shop_phone }}/fr">French</a>
       </p>
       <p><a class="dropdown-item" href="/translation/{{ shop_name }}/{{ shop_phone }}/de">German</a>
-      </p>
-      <p><a class="dropdown-item" href="/translation/{{ shop_name }}/{{ shop_phone }}/fr">French</a>
       </p>
       <p><a class="dropdown-item" href="/translation/{{ shop_name }}/{{ shop_phone }}/he">Hebrew</a>
       </p>
@@ -59,16 +74,33 @@
   </div>
   <div class="container marketing">
     <div class="row">
-      {% for review in yelp_reviews %}
       <div class="col-lg-4">
-        <img src="{{ review.user_img }}" id="user_img">
-        <h3>{{ review.user_name }}</h3>
-        <i>{{ review.date }}</i>
-        <p>{{ translation.translations[loop.index-1].translatedText }}</p>
-        <p><a class="btn btn-md" href="{{ review.url }}" role="button" target="_blank">View on Yelp</a></p>
+        <img src="{{ yelp_reviews[0].user_img }}" id="user_img">
+        <h3>{{ translation.translations[7].translatedText }}</h3>
+        <i>{{ translation.translations[8].translatedText }}</i>
+        <p>{{ translation.translations[9].translatedText }}</p>
+        <p><a class="btn btn-md" href="{{ yelp_reviews[0].url }}" role="button"
+            target="_blank">{{ translation.translations[5].translatedText }}</a></p>
       </div>
-      {% endfor %}
+      <div class="col-lg-4">
+        <img src="{{ yelp_reviews[1].user_img }}" id="user_img">
+        <h3>{{ translation.translations[10].translatedText }}</h3>
+        <i>{{ translation.translations[11].translatedText }}</i>
+        <p>{{ translation.translations[12].translatedText }}</p>
+        <p><a class="btn btn-md" href="{{ yelp_reviews[1].url }}" role="button"
+            target="_blank">{{ translation.translations[5].translatedText }}</a></p>
+      </div>
+      <div class="col-lg-4">
+        <img src="{{ yelp_reviews[2].user_img }}" id="user_img">
+        <h3>{{ translation.translations[13].translatedText }}</h3>
+        <i>{{ translation.translations[14].translatedText }}</i>
+        <p>{{ translation.translations[15].translatedText }}</p>
+        <p><a class="btn btn-md" href="{{ yelp_reviews[2].url }}" role="button"
+            target="_blank">{{ translation.translations[5].translatedText }}</a></p>
+      </div>
     </div>
   </div>
-
+  <footer>
+    <p class="text-center text-muted">&#xa9; {{ translation.translations[6].translatedText }}</p>
+  </footer>
   {% endblock %}
