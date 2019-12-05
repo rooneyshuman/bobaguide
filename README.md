@@ -20,6 +20,15 @@ The following frameworks were used to build this full-stack web-app:
 * [Google Datastore](https://cloud.google.com/datastore/docs/) - Persistent data storage
 * [Google App Engine](https://cloud.google.com/appengine/docs/) - Application deployment
 
+### APIs
+
+The following APIs were integrated with this application:
+
+* [Geocoding API](https://developers.google.com/maps/documentation/geocoding/intro)
+* [Google Maps API](https://developers.google.com/maps/documentation/javascript/tutorial)
+* [Yelp API](https://www.yelp.com/knowledge)
+* [Google Translation API](https://cloud.google.com/translate/docs/basic/translating-text)
+
 ## Authors
 
 * **Belén Bustamante** - [rooneyshuman](https://github.com/rooneyshuman)
