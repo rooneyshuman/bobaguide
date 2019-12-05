@@ -11,11 +11,12 @@ import json
 from google.cloud import translate_v2 as translate
 from google.oauth2 import service_account
 import os
+from reviews import Reviews
 
 
 class Translation(MethodView):
     """
-    Translates text into the target language. Target must be an ISO 639-1 language code.
+    Translates the Reviews page into the target language selected from a menu by the user.
     """
 
     def get(self, shop_name, shop_phone, target):
@@ -27,23 +28,34 @@ class Translation(MethodView):
         key_row = settings.select()[0]
         api_keys = dict(google=key_row[0], yelp=key_row[1])
 
+        # Collect page components to translate
+        text_to_translate = [
+            "Home",
+            "Add Tea Shop",
+            "View Tea Shops",
+            shop_name,
+            "Translate Reviews",
+            "View on Yelp",
+            "Copyright 2019 Boba Guide",
+        ]
         # Get Yelp reviews to translate
-        yelp_reviews = Translation().get_yelp_reviews(shop_name, shop_phone)
-        # Extract the text to translate for each review
-        reviews_to_translate = []
+        yelp_reviews = Reviews().get_yelp_reviews(shop_name, shop_phone)
+        # Extract the username, date, and text to translate for each Yelp review
         for idx, review in enumerate(yelp_reviews):
-            reviews_to_translate.append(yelp_reviews[idx]["text"])
+            text_to_translate.append(yelp_reviews[idx]["user_name"])
+            text_to_translate.append(yelp_reviews[idx]["date"])
+            text_to_translate.append(yelp_reviews[idx]["text"])
 
-        # Perform POST request to Google Translation API to translate reviews
+        # Perform POST request to Google Translation API to translate page
         headers = {"content-type": "application/json; charset=utf-8"}
-        params = {"q": reviews_to_translate, "target": target}
+        params = {"q": text_to_translate, "target": target}
         response = requests.post(
             "https://translation.googleapis.com/language/translate/v2?key="
             + api_keys["google"],
             headers=headers,
             params=params,
         )
-
+        # Return JSON-encoded content of the response
         result = response.json()
         translation = result["data"]
         return render_template(
@@ -53,64 +65,3 @@ class Translation(MethodView):
             shop_phone=shop_phone,
             yelp_reviews=yelp_reviews,
         )
-
-    def get_yelp_reviews(self, shop_name, shop_phone):
-        """
-        GET method for the reviews page
-        :return: renders the reviews.html page on return
-        """
-        settings = bgmodel.get_settings()
-        key_row = settings.select()[0]
-        api_keys = dict(google=key_row[0], yelp=key_row[1])
-
-        # Retrieve yelp id through phone search
-        response = requests.get(
-            "https://api.yelp.com/v3/businesses/search/phone?phone=+1"
-            + shop_phone.replace("-", ""),
-            headers={"Authorization": "Bearer " + api_keys["yelp"]},
-        )
-
-        # Check for status code of HTTP request to yelp API
-        if response.status_code == 200 and response.json()["total"] > 0:
-            yelp_id = response.json()["businesses"][0]["id"]
-
-            # Retrieve yelp reviews through yelp id and passes them to reviews template
-            response = requests.get(
-                "https://api.yelp.com/v3/businesses/" + yelp_id + "/reviews",
-                headers={"Authorization": "Bearer " + api_keys["yelp"]},
-            )
-            if response.status_code == 200:
-                raw_reviews = response.json()["reviews"]
-
-                # Format datetime string to mm/dd/yyyy
-                for review in raw_reviews:
-                    date_time_str = review["time_created"]
-                    date_str = datetime.datetime.strptime(
-                        date_time_str, "%Y-%m-%d %H:%M:%S"
-                    ).date()
-                    formatted_date = (
-                        str(date_str.month)
-                        + "/"
-                        + str(date_str.day)
-                        + "/"
-                        + str(date_str.year)
-                    )
-                    review["time_created"] = formatted_date
-
-                # Build dictionary of yelp reviews
-                yelp_reviews = [
-                    dict(
-                        id=review["id"],
-                        text=review["text"],
-                        date=review["time_created"],
-                        url=review["url"],
-                        user_name=review["user"]["name"],
-                        user_img=review["user"]["image_url"],
-                    )
-                    for review in raw_reviews
-                ]
-                return yelp_reviews
-            else:
-                return render_template("404.html", shop_name=shop_name)
-        else:
-            return render_template("404.html", shop_name=shop_name)
