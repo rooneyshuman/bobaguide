@@ -11,28 +11,35 @@
       <center>{{ shop_name }}</center>
     </h1>
   </div>
+  <div class="dropdown">
+    <button class="btn btn-md btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton"
+      data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+      Translate Review
+    </button>
+    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+      <p><a class="dropdown-item" href="/translation/{{ shop_name }}/{{ shop_phone }}/ar">Arabic</a>
+      </p>
+      <p><a class="dropdown-item" href="/translation/{{ shop_name }}/{{ shop_phone }}/bn">Bengali</a>
+      </p>
+      <p><a class="dropdown-item" href="/translation/{{ shop_name }}/{{ shop_phone }}/zh">Chinese</a>
+      </p>
+      <p><a class="dropdown-item" href="/translation/{{ shop_name }}/{{ shop_phone }}/fr">French</a>
+      </p>
+      <p><a class="dropdown-item" href="/translation/{{ shop_name }}/{{ shop_phone }}/pt">Portuguese</a></p>
+      <p><a class="dropdown-item" href="/translation/{{ shop_name }}/{{ shop_phone}}/es">Spanish</a>
+      </p>
+    </div>
+  </div>
+
+  {% for review in yelp_reviews %}
   <div class="container marketing">
     <div class="row">
-      {% for review in yelp_reviews %}
       <div class="col-lg-4">
         <img src="{{ review.user_img }}" id="user_img">
         <h3>{{ review.user_name }}</h3>
         <i>{{ review.date }}</i>
         <p>{{ review.text }}</p>
         <p><a class="btn btn-md" href="{{ review.url }}" role="button" target="_blank">View on Yelp</a></p>
-        <div class="dropdown">
-          <button class="btn btn-md btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton"
-            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            Translate Review
-          </button>
-          <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-            <p><a class="dropdown-item" href="/translation/{{ shop_name }}/{{ shop_phone }}/{{ review.text }}/ar">Arabic</a></p>
-            <p><a class="dropdown-item" href="/translation/{{ shop_name }}/{{ shop_phone }}/{{ review.text }}/bn">Bengali</a></p>
-            <p><a class="dropdown-item" href="/translation/{{ shop_name }}/{{ shop_phone }}/{{ review.text }}/zh">Chinese</a></p>
-            <p><a class="dropdown-item" href="/translation/{{ shop_name }}/{{ shop_phone }}/{{ review.text }}/fr">French</a></p>
-            <p><a class="dropdown-item" href="/translation/{{ shop_name }}/{{ shop_phone }}/{{ review.text }}/pt">Portuguese</a></p>
-            <p><a class="dropdown-item" href="/translation/{{ shop_name }}/{{ shop_phone }}/{{ review.text }}/es">Spanish</a></p>
-        </div>
       </div>
       {% endfor %}
     </div>
