@@ -17,6 +17,7 @@ class Translation(MethodView):
     """
     Translates text into the target language. Target must be an ISO 639-1 language code.
     """
+
     def get(self, shop_name, shop_phone, target):
         """
         GET method for the translation page
@@ -32,20 +33,26 @@ class Translation(MethodView):
         reviews_to_translate = []
         for idx, review in enumerate(yelp_reviews):
             reviews_to_translate.append(yelp_reviews[idx]["text"])
-        
+
         # Perform POST request to Google Translation API to translate reviews
-        headers = { 'content-type': 'application/json; charset=utf-8' }
-        params = { 'q': reviews_to_translate, 'target': target }
+        headers = {"content-type": "application/json; charset=utf-8"}
+        params = {"q": reviews_to_translate, "target": target}
         response = requests.post(
-            "https://translation.googleapis.com/language/translate/v2?key=" + api_keys["google"],
+            "https://translation.googleapis.com/language/translate/v2?key="
+            + api_keys["google"],
             headers=headers,
-            params=params
+            params=params,
         )
 
         result = response.json()
         translation = result["data"]
-        return render_template("translation.html", translation=translation, shop_name=shop_name, shop_phone=shop_phone, yelp_reviews=yelp_reviews)
-
+        return render_template(
+            "translation.html",
+            translation=translation,
+            shop_name=shop_name,
+            shop_phone=shop_phone,
+            yelp_reviews=yelp_reviews,
+        )
 
     def get_yelp_reviews(self, shop_name, shop_phone):
         """
