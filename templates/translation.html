@@ -13,16 +13,16 @@
   </div>
   <div class="container marketing">
     <div class="row">
-      <div class="col-md-6">
-        <p>Review:</p>
-        <p>{{ result.input }}</p>
+      {% for review in yelp_reviews %}
+      <div class="col-lg-4">
+        <img src="{{ review.user_img }}" id="user_img">
+        <h3>{{ review.user_name }}</h3>
+        <i>{{ review.date }}</i>
+        <p>{{ translation.translations[loop.index-1].translatedText }}</p>
+        <p><a class="btn btn-md" href="{{ review.url }}" role="button" target="_blank">View on Yelp</a></p>
       </div>
-      <div class="col-md-6">
-        <p>Translated:</p>
-        <p>{{ result.translatedText }}</p>
-      </div>
+      {% endfor %}
     </div>
   </div>
-</div>
 
-{% endblock %}
+  {% endblock %}
