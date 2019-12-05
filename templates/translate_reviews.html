@@ -18,7 +18,7 @@
         <img src="{{ review.user_img }}" id="user_img">
         <h3>{{ review.user_name }}</h3>
         <i>{{ review.date }}</i>
-        <p>{{ translation.translatedText }}</p>
+        <p>{{ translation.translations[loop.index-1].translatedText }}</p>
         <p><a class="btn btn-md" href="{{ review.url }}" role="button" target="_blank">View on Yelp</a></p>
       </div>
       {% endfor %}
