@@ -22,25 +22,25 @@ class Translation(MethodView):
         GET method for the translation page
         :return: renders the translation.html page on return
         """
+        settings = bgmodel.get_settings()
+        key_row = settings.select()[0]
+        api_keys = dict(google=key_row[0], yelp=key_row[1])
+
         # Get Yelp reviews to translate
         yelp_reviews = Translation().get_yelp_reviews(shop_name, shop_phone)
         
-        key_path = "bobaguide-84a4975c26d7.json"
-        os.environ["GOOGLE_APPLICATION_CREDENTIALS"] = key_path
+        headers = { 'content-type': 'application/json; charset=utf-8' }
+        params = { 'q': text, 'target': target }
 
-        translate_client = translate.Client()
+        response = requests.post(
+            "https://translation.googleapis.com/language/translate/v2?key=" + api_keys["google"],
+            headers=headers,
+            params=params
+        )
 
-        if isinstance(text, six.binary_type):
-            text = text.decode("utf-8")
-
-        result = translate_client.translate(text, target_language=target)
-        translation = result["translatedText"]
-
-        print(u"Text: {}".format(result["input"]))
-        print(u"Translation: {}".format(result["translatedText"]))
-        print(u"Detected source language: {}".format(result["detectedSourceLanguage"]))
-
-        return render_template("translate_reviews.html", result=result, shop_name=shop_name, shop_phone=shop_phone, yelp_reviews=yelp_reviews)
+        result = response.json()
+        translation = result["data"]["translations"][0]
+        return render_template("translate_reviews.html", translation=translation, shop_name=shop_name, shop_phone=shop_phone, yelp_reviews=yelp_reviews)
 
 
     def get_yelp_reviews(self, shop_name, shop_phone):
