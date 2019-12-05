@@ -39,7 +39,7 @@ app.add_url_rule(
 Route for translation (display) page. Accepts GET methods
 """
 app.add_url_rule(
-    "/translation/<shop_name>/<shop_phone>/<text>/<target>",
+    "/translation/<shop_name>/<shop_phone>/<target>",
     view_func=Translation.as_view("translation"),
     methods=["GET"],
 )
