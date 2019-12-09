@@ -77,7 +77,7 @@
     <div class="row">
       {% for review in yelp_reviews %}
       <div class="col-lg-4">
-        <img src="{{ review.user_img }}" id="user_img">
+        <img src="{{ review.user_img }}" onError="this.src = 'https://cdn2.iconfinder.com/data/icons/rcons-user/32/male-shadow-fill-circle-512.png'" id="user_img">
         <h3>{{ review.user_name }}</h3>
         <i>{{ review.date }}</i>
         <p>{{ review.text }}</p>
