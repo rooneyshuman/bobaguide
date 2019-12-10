@@ -34,6 +34,7 @@ class Translation(MethodView):
 
         # Collect page components to translate
         text_to_translate = [
+            "boba guide",
             "Home",
             "Add Tea Shop",
             "View Tea Shops",
