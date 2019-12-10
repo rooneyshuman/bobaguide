@@ -22,49 +22,29 @@
             Translate Page
           </button>
           <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-            <p><a class="dropdown-item" href="/translation/{{ shop_name }}/{{ shop_phone }}/ar">Arabic</a>
-            </p>
-            <p><a class="dropdown-item" href="/translation/{{ shop_name }}/{{ shop_phone }}/bn">Bengali</a>
-            </p>
-            <p><a class="dropdown-item" href="/translation/{{ shop_name }}/{{ shop_phone }}/zh">Chinese</a>
-            </p>
-            <p><a class="dropdown-item" href="/translation/{{ shop_name }}/{{ shop_phone }}/hr">Croatian</a>
-            </p>
-            <p><a class="dropdown-item" href="/translation/{{ shop_name }}/{{ shop_phone }}/da">Danish</a>
-            </p>
-            <p><a class="dropdown-item" href="/translation/{{ shop_name }}/{{ shop_phone }}/en">English</a>
-            </p>
-            <p><a class="dropdown-item" href="/translation/{{ shop_name }}/{{ shop_phone }}/fr">French</a>
-            </p>
-            <p><a class="dropdown-item" href="/translation/{{ shop_name }}/{{ shop_phone }}/de">German</a>
-            </p>
-            <p><a class="dropdown-item" href="/translation/{{ shop_name }}/{{ shop_phone }}/he">Hebrew</a>
-            </p>
-            <p><a class="dropdown-item" href="/translation/{{ shop_name }}/{{ shop_phone }}/ga">Irish</a>
-            </p>
-            <p><a class="dropdown-item" href="/translation/{{ shop_name }}/{{ shop_phone }}/ja">Japanese</a>
-            </p>
-            <p><a class="dropdown-item" href="/translation/{{ shop_name }}/{{ shop_phone }}/ko">Korean</a>
-            </p>
-            <p><a class="dropdown-item" href="/translation/{{ shop_name }}/{{ shop_phone }}/la">Latin</a>
-            </p>
+            <p><a class="dropdown-item" href="/translation/{{ shop_name }}/{{ shop_phone }}/ar">Arabic</a></p>
+            <p><a class="dropdown-item" href="/translation/{{ shop_name }}/{{ shop_phone }}/bn">Bengali</a></p>
+            <p><a class="dropdown-item" href="/translation/{{ shop_name }}/{{ shop_phone }}/zh">Chinese</a></p>
+            <p><a class="dropdown-item" href="/translation/{{ shop_name }}/{{ shop_phone }}/hr">Croatian</a></p>
+            <p><a class="dropdown-item" href="/translation/{{ shop_name }}/{{ shop_phone }}/da">Danish</a></p>
+            <p><a class="dropdown-item" href="/translation/{{ shop_name }}/{{ shop_phone }}/en">English</a></p>
+            <p><a class="dropdown-item" href="/translation/{{ shop_name }}/{{ shop_phone }}/fr">French</a></p>
+            <p><a class="dropdown-item" href="/translation/{{ shop_name }}/{{ shop_phone }}/de">German</a></p>
+            <p><a class="dropdown-item" href="/translation/{{ shop_name }}/{{ shop_phone }}/he">Hebrew</a></p>
+            <p><a class="dropdown-item" href="/translation/{{ shop_name }}/{{ shop_phone }}/ga">Irish</a></p>
+            <p><a class="dropdown-item" href="/translation/{{ shop_name }}/{{ shop_phone }}/ja">Japanese</a></p>
+            <p><a class="dropdown-item" href="/translation/{{ shop_name }}/{{ shop_phone }}/ko">Korean</a></p>
+            <p><a class="dropdown-item" href="/translation/{{ shop_name }}/{{ shop_phone }}/la">Latin</a></p>
             <p><a class="dropdown-item" href="/translation/{{ shop_name }}/{{ shop_phone }}/pt">Portuguese</a></p>
             <p><a class="dropdown-item" href="/translation/{{ shop_name }}/{{ shop_phone }}/ru">Russian</a></p>
-            <p><a class="dropdown-item" href="/translation/{{ shop_name }}/{{ shop_phone}}/es">Spanish</a>
-            </p>
-            <p><a class="dropdown-item" href="/translation/{{ shop_name }}/{{ shop_phone}}/th">Thai</a>
-            </p>
-            <p><a class="dropdown-item" href="/translation/{{ shop_name }}/{{ shop_phone}}/uk">Ukrainian</a>
-            </p>
-            <p><a class="dropdown-item" href="/translation/{{ shop_name }}/{{ shop_phone}}/vi">Vietnamese</a>
-            </p>
+            <p><a class="dropdown-item" href="/translation/{{ shop_name }}/{{ shop_phone}}/es">Spanish</a></p>
+            <p><a class="dropdown-item" href="/translation/{{ shop_name }}/{{ shop_phone}}/th">Thai</a></p>
+            <p><a class="dropdown-item" href="/translation/{{ shop_name }}/{{ shop_phone}}/uk">Ukrainian</a></p>
+            <p><a class="dropdown-item" href="/translation/{{ shop_name }}/{{ shop_phone}}/vi">Vietnamese</a></p>
           </div>
         </div>
-
-
       </ul>
     </div>
-
   </nav>
 </header>
 
@@ -74,6 +54,7 @@
       <center>{{ shop_name }}</center>
     </h1>
   </div>
+
   <div class="container marketing">
     <div class="row">
       {% for review in yelp_reviews %}
@@ -89,8 +70,9 @@
       {% endfor %}
     </div>
   </div>
+</div>
 
-  <footer>
-    <p class="text-center text-muted">© Copyright 2019 Boba Guide</p>
-  </footer>
-  {% endblock %}
+<footer>
+  <p class="text-center text-muted">© Copyright 2019 Boba Guide</p>
+</footer>
+{% endblock %}
