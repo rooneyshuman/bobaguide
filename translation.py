@@ -28,6 +28,10 @@ class Translation(MethodView):
         key_row = settings.select()[0]
         api_keys = dict(google=key_row[0], yelp=key_row[1])
 
+        # Prevent application from attempting retry (likely due to missing Yelp user image)
+        if target == "None":
+            return "Target must contain a value"
+
         # Collect page components to translate
         text_to_translate = [
             "Home",
@@ -55,6 +59,7 @@ class Translation(MethodView):
             headers=headers,
             params=params,
         )
+
         # Return JSON-encoded content of the response
         result = response.json()
         translation = result["data"]
