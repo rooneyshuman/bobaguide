@@ -14,9 +14,33 @@ class Reviews(MethodView):
         GET method for the reviews page
         :return: renders the reviews.html page on return
         """
+        yelp_reviews = Reviews().get_yelp_reviews(shop_name, shop_phone)
+        if len(yelp_reviews) == 0:
+            return render_template("404.html", shop_name=shop_name)
+        else:
+            return render_template(
+                "reviews.html",
+                yelp_reviews=yelp_reviews,
+                shop_name=shop_name,
+                shop_phone=shop_phone,
+            )
+
+    def post(self):
+        """
+        POST method for the reviews page.
+        :return: renders the reivews.html page on return
+        """
+        return redirect(url_for("reviews"))
+
+    def get_yelp_reviews(self, shop_name, shop_phone):
+        """
+        Returns the top three Yelp reviews for a given shop using the Yelp API. Originally, this logic was contained in the GET request retrieving reviews, but was extracted as a helper method to allow use by other endpoints.
+        :return: a list of Yelp reviews
+        """
         settings = bgmodel.get_settings()
         key_row = settings.select()[0]
         api_keys = dict(google=key_row[0], yelp=key_row[1])
+        yelp_reviews = []
 
         # Retrieve yelp id through phone search
         response = requests.get(
@@ -64,18 +88,8 @@ class Reviews(MethodView):
                     )
                     for review in raw_reviews
                 ]
-
-                return render_template(
-                    "reviews.html", yelp_reviews=yelp_reviews, shop_name=shop_name
-                )
+                return yelp_reviews
             else:
-                return render_template("404.html", shop_name=shop_name)
+                return yelp_reviews
         else:
-            return render_template("404.html", shop_name=shop_name)
-
-    def post(self):
-        """
-        POST method for the reviews page.
-        :return: renders the reivews.html page on return
-        """
-        return redirect(url_for("reviews"))
+            return yelp_reviews

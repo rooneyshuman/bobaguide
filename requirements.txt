@@ -2,3 +2,4 @@ flask
 google-cloud-datastore
 gunicorn
 requests
+google-cloud-translate==2.0.0

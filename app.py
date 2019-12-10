@@ -7,6 +7,7 @@ from index import Index
 from form import Form
 from shops import Shops
 from reviews import Reviews
+from translation import Translation
 
 app = flask.Flask(__name__)  # our Flask app
 
@@ -32,6 +33,15 @@ app.add_url_rule(
     "/reviews/<shop_name>/<shop_phone>",
     view_func=Reviews.as_view("reviews"),
     methods=["GET", "POST"],
+)
+
+"""
+Route for translation (display) page. Accepts GET methods
+"""
+app.add_url_rule(
+    "/translation/<shop_name>/<shop_phone>/<target>",
+    view_func=Translation.as_view("translation"),
+    methods=["GET"],
 )
 
 """

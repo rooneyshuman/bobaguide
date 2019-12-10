@@ -3,6 +3,11 @@ h1 {
     color: white;
 }
 
+.dropdown-menu {
+  max-height: 300px;
+  overflow-y: auto;
+}
+
 #shop_bg {
   background-image: url('/static/images/shop_bg.jpg');
   zoom: 1.4;
@@ -45,4 +50,8 @@ h1 {
 .btn:hover {
   color: white;
   background-color: rgb(38,135,132) !important;
+}
+
+.dropdown-button {
+  margin-left: 5px;
 }
