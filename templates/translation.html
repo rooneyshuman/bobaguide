@@ -6,21 +6,65 @@
 
 {% block content %}
 <header>
-    <nav class="navbar mavbar-expand-sm navbar-light bg-white" role="navigation">
-      <a class="navbar-brand" href="/">
-        <img src="/static/images/logo.jpg" width=50px></i> boba guide
-      </a>
-  
-      <div class="expand navbar-expand">
-        <ul class="nav navbar-nav navbar-right">
-          <li class="nav-item"><a class="nav-link" href="/">{{ translation.translations[0].translatedText }}</a></li>
-          <li class="nav-item"><a class="nav-link" href="/form">{{ translation.translations[1].translatedText }}</a></li>
-          <li class="nav-item"><a class="nav-link" href="/shops">{{ translation.translations[2].translatedText }}</a></li>
-        </ul>
-      </div>
-  
-    </nav>
-  </header>
+  <nav class="navbar mavbar-expand-sm navbar-light bg-white" role="navigation">
+    <a class="navbar-brand" href="/">
+      <img src="/static/images/logo.jpg" width=50px></i> boba guide
+    </a>
+
+    <div class="expand navbar-expand">
+      <ul class="nav navbar-nav navbar-right">
+        <li class="nav-item"><a class="nav-link" href="/">{{ translation.translations[0].translatedText }}</a></li>
+        <li class="nav-item"><a class="nav-link" href="/form">{{ translation.translations[1].translatedText }}</a></li>
+        <li class="nav-item"><a class="nav-link" href="/shops">{{ translation.translations[2].translatedText }}</a></li>
+        <div class="dropdown">
+          <button class="btn btn-sm btn-secondary dropdown-toggle dropdown-button" type="button" id="dropdownMenuButton"
+            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            {{ translation.translations[4].translatedText }}
+          </button>
+          <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+            <p><a class="dropdown-item" href="/translation/{{ shop_name }}/{{ shop_phone }}/ar">Arabic</a>
+            </p>
+            <p><a class="dropdown-item" href="/translation/{{ shop_name }}/{{ shop_phone }}/bn">Bengali</a>
+            </p>
+            <p><a class="dropdown-item" href="/translation/{{ shop_name }}/{{ shop_phone }}/zh">Chinese</a>
+            </p>
+            <p><a class="dropdown-item" href="/translation/{{ shop_name }}/{{ shop_phone }}/hr">Croatian</a>
+            </p>
+            <p><a class="dropdown-item" href="/translation/{{ shop_name }}/{{ shop_phone }}/da">Danish</a>
+            </p>
+            <p><a class="dropdown-item" href="/translation/{{ shop_name }}/{{ shop_phone }}/en">English</a>
+            </p>
+            <p><a class="dropdown-item" href="/translation/{{ shop_name }}/{{ shop_phone }}/fr">French</a>
+            </p>
+            <p><a class="dropdown-item" href="/translation/{{ shop_name }}/{{ shop_phone }}/de">German</a>
+            </p>
+            <p><a class="dropdown-item" href="/translation/{{ shop_name }}/{{ shop_phone }}/he">Hebrew</a>
+            </p>
+            <p><a class="dropdown-item" href="/translation/{{ shop_name }}/{{ shop_phone }}/ga">Irish</a>
+            </p>
+            <p><a class="dropdown-item" href="/translation/{{ shop_name }}/{{ shop_phone }}/ja">Japanese</a>
+            </p>
+            <p><a class="dropdown-item" href="/translation/{{ shop_name }}/{{ shop_phone }}/ko">Korean</a>
+            </p>
+            <p><a class="dropdown-item" href="/translation/{{ shop_name }}/{{ shop_phone }}/la">Latin</a>
+            </p>
+            <p><a class="dropdown-item" href="/translation/{{ shop_name }}/{{ shop_phone }}/pt">Portuguese</a></p>
+            <p><a class="dropdown-item" href="/translation/{{ shop_name }}/{{ shop_phone }}/ru">Russian</a></p>
+            <p><a class="dropdown-item" href="/translation/{{ shop_name }}/{{ shop_phone}}/es">Spanish</a>
+            </p>
+            <p><a class="dropdown-item" href="/translation/{{ shop_name }}/{{ shop_phone}}/th">Thai</a>
+            </p>
+            <p><a class="dropdown-item" href="/translation/{{ shop_name }}/{{ shop_phone}}/uk">Ukrainian</a>
+            </p>
+            <p><a class="dropdown-item" href="/translation/{{ shop_name }}/{{ shop_phone}}/vi">Vietnamese</a>
+            </p>
+          </div>
+
+      </ul>
+    </div>
+
+  </nav>
+</header>
 
 <div>
   <div class="container" id="shop_bg">
@@ -28,79 +72,42 @@
       <center>{{ translation.translations[3].translatedText }}</center>
     </h1>
   </div>
-  <div class="dropdown">
-    <button class="btn btn-sm btn-secondary dropdown-toggle dropdown-button" type="button" id="dropdownMenuButton"
-      data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-      {{ translation.translations[4].translatedText }}
-    </button>
-    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-      <p><a class="dropdown-item" href="/translation/{{ shop_name }}/{{ shop_phone }}/ar">Arabic</a>
-      </p>
-      <p><a class="dropdown-item" href="/translation/{{ shop_name }}/{{ shop_phone }}/bn">Bengali</a>
-      </p>
-      <p><a class="dropdown-item" href="/translation/{{ shop_name }}/{{ shop_phone }}/zh">Chinese</a>
-      </p>
-      <p><a class="dropdown-item" href="/translation/{{ shop_name }}/{{ shop_phone }}/hr">Croatian</a>
-      </p>
-      <p><a class="dropdown-item" href="/translation/{{ shop_name }}/{{ shop_phone }}/da">Danish</a>
-      </p>
-      <p><a class="dropdown-item" href="/translation/{{ shop_name }}/{{ shop_phone }}/en">English</a>
-      </p>
-      <p><a class="dropdown-item" href="/translation/{{ shop_name }}/{{ shop_phone }}/fr">French</a>
-      </p>
-      <p><a class="dropdown-item" href="/translation/{{ shop_name }}/{{ shop_phone }}/de">German</a>
-      </p>
-      <p><a class="dropdown-item" href="/translation/{{ shop_name }}/{{ shop_phone }}/he">Hebrew</a>
-      </p>
-      <p><a class="dropdown-item" href="/translation/{{ shop_name }}/{{ shop_phone }}/ga">Irish</a>
-      </p>
-      <p><a class="dropdown-item" href="/translation/{{ shop_name }}/{{ shop_phone }}/ja">Japanese</a>
-      </p>
-      <p><a class="dropdown-item" href="/translation/{{ shop_name }}/{{ shop_phone }}/ko">Korean</a>
-      </p>
-      <p><a class="dropdown-item" href="/translation/{{ shop_name }}/{{ shop_phone }}/la">Latin</a>
-      </p>
-      <p><a class="dropdown-item" href="/translation/{{ shop_name }}/{{ shop_phone }}/pt">Portuguese</a></p>
-      <p><a class="dropdown-item" href="/translation/{{ shop_name }}/{{ shop_phone }}/ru">Russian</a></p>
-      <p><a class="dropdown-item" href="/translation/{{ shop_name }}/{{ shop_phone}}/es">Spanish</a>
-      </p>
-      <p><a class="dropdown-item" href="/translation/{{ shop_name }}/{{ shop_phone}}/th">Thai</a>
-      </p>
-      <p><a class="dropdown-item" href="/translation/{{ shop_name }}/{{ shop_phone}}/uk">Ukrainian</a>
-      </p>
-      <p><a class="dropdown-item" href="/translation/{{ shop_name }}/{{ shop_phone}}/vi">Vietnamese</a>
-      </p>
+</div>
+<div class="container marketing">
+  <div class="row">
+    <div class="col-lg-4">
+      <img src="{{ yelp_reviews[0].user_img }}"
+        onError="this.src = 'https://cdn2.iconfinder.com/data/icons/rcons-user/32/male-shadow-fill-circle-512.png'"
+        id="user_img">
+      <h3>{{ translation.translations[7].translatedText }}</h3>
+      <i>{{ translation.translations[8].translatedText }}</i>
+      <p>{{ translation.translations[9].translatedText }}</p>
+      <p><a class="btn btn-md" href="{{ yelp_reviews[0].url }}" role="button"
+          target="_blank">{{ translation.translations[5].translatedText }}</a></p>
+    </div>
+    <div class="col-lg-4">
+      <img src="{{ yelp_reviews[1].user_img }}"
+        onError="this.src = 'https://cdn2.iconfinder.com/data/icons/rcons-user/32/male-shadow-fill-circle-512.png'"
+        id="user_img">
+      <h3>{{ translation.translations[10].translatedText }}</h3>
+      <i>{{ translation.translations[11].translatedText }}</i>
+      <p>{{ translation.translations[12].translatedText }}</p>
+      <p><a class="btn btn-md" href="{{ yelp_reviews[1].url }}" role="button"
+          target="_blank">{{ translation.translations[5].translatedText }}</a></p>
+    </div>
+    <div class="col-lg-4">
+      <img src="{{ yelp_reviews[2].user_img }}"
+        onError="this.src = 'https://cdn2.iconfinder.com/data/icons/rcons-user/32/male-shadow-fill-circle-512.png'"
+        id="user_img">
+      <h3>{{ translation.translations[13].translatedText }}</h3>
+      <i>{{ translation.translations[14].translatedText }}</i>
+      <p>{{ translation.translations[15].translatedText }}</p>
+      <p><a class="btn btn-md" href="{{ yelp_reviews[2].url }}" role="button"
+          target="_blank">{{ translation.translations[5].translatedText }}</a></p>
     </div>
   </div>
-  <div class="container marketing">
-    <div class="row">
-      <div class="col-lg-4">
-        <img src="{{ yelp_reviews[0].user_img }}" onError="this.src = 'https://cdn2.iconfinder.com/data/icons/rcons-user/32/male-shadow-fill-circle-512.png'" id="user_img">
-        <h3>{{ translation.translations[7].translatedText }}</h3>
-        <i>{{ translation.translations[8].translatedText }}</i>
-        <p>{{ translation.translations[9].translatedText }}</p>
-        <p><a class="btn btn-md" href="{{ yelp_reviews[0].url }}" role="button"
-            target="_blank">{{ translation.translations[5].translatedText }}</a></p>
-      </div>
-      <div class="col-lg-4">
-        <img src="{{ yelp_reviews[1].user_img }}" onError="this.src = 'https://cdn2.iconfinder.com/data/icons/rcons-user/32/male-shadow-fill-circle-512.png'" id="user_img">
-        <h3>{{ translation.translations[10].translatedText }}</h3>
-        <i>{{ translation.translations[11].translatedText }}</i>
-        <p>{{ translation.translations[12].translatedText }}</p>
-        <p><a class="btn btn-md" href="{{ yelp_reviews[1].url }}" role="button"
-            target="_blank">{{ translation.translations[5].translatedText }}</a></p>
-      </div>
-      <div class="col-lg-4">
-        <img src="{{ yelp_reviews[2].user_img }}" onError="this.src = 'https://cdn2.iconfinder.com/data/icons/rcons-user/32/male-shadow-fill-circle-512.png'" id="user_img">
-        <h3>{{ translation.translations[13].translatedText }}</h3>
-        <i>{{ translation.translations[14].translatedText }}</i>
-        <p>{{ translation.translations[15].translatedText }}</p>
-        <p><a class="btn btn-md" href="{{ yelp_reviews[2].url }}" role="button"
-            target="_blank">{{ translation.translations[5].translatedText }}</a></p>
-      </div>
-    </div>
-  </div>
-  <footer>
-    <p class="text-center text-muted">&#xa9; {{ translation.translations[6].translatedText }}</p>
-  </footer>
-  {% endblock %}
+</div>
+<footer>
+  <p class="text-center text-muted">&#xa9; {{ translation.translations[6].translatedText }}</p>
+</footer>
+{% endblock %}

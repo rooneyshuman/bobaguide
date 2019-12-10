@@ -38,7 +38,7 @@ class Translation(MethodView):
             "Add Tea Shop",
             "View Tea Shops",
             shop_name,
-            "Translate Reviews",
+            "Translate Page",
             "View on Yelp",
             "Copyright 2019 Boba Guide",
         ]
